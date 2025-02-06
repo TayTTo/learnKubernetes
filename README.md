@@ -5,6 +5,7 @@
 2. Then setup minikube.
 Run command `minikube start`
 > Result:
+```
 ✨  Automatically selected the docker driver. Other choices: qemu2, vmware, ssh
 📌  Using Docker driver with root privileges
 👍  Starting "minikube" primary control-plane node in "minikube" cluster
@@ -23,20 +24,24 @@ Run command `minikube start`
 🌟  Enabled addons: storage-provisioner, default-storageclass
 🏄  Done! kubectl is now configured to use "minikube" cluster and "default" namespace by default
 
+```
+
 ## 2. Some basic kubernetes's commands 
 
 1. `kubectl get nodes`
 > Result:
+```
 NAME       STATUS   ROLES           AGE   VERSION
 minikube   Ready    control-plane   17m   v1.32.0
-
+```
 It indicates that there is one node in the clust ther, it's role is master node.
 
 2. `kubectl config get-contexts` to see which is the curren cluster we are working on.
 > Result:
+```
 CURRENT   NAME       CLUSTER    AUTHINFO   NAMESPACE
 *         minikube   minikube   minikube   default
-
+```
 3. `kubectl config use-contexts <cluster-name>` to choose the desired cluster.
 
 ## 3. Run a simple pod using command.
@@ -48,12 +53,16 @@ pod/nginx-pod created
 2. List pods.
 Run the command `kubectl get pods`
 > Result:
+```
 NAME        READY   STATUS    RESTARTS   AGE
 nginx-pod   1/1     Running   0          2m37s
+
+```
 
 3. Get pod details.
 Run the command `kubectl describe pod nginx-pod`
 > Result:
+```
 Name:             nginx-pod
 Namespace:        default
 Priority:         0
@@ -82,10 +91,13 @@ Containers:
       /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-w2ffk (ro)
 ...
 
+```
 4. Delete the pod.
 Run the command `kubectl delete pod nginx-pod`
 > Result:
+```
 pod "nginx-pod" deleted
+```
 
 ## Run a simple pod using yaml file
 
@@ -96,9 +108,11 @@ pod/nginx-pod created
 
 3. Check list of pods by running `kubectl get pods -o wide`
 > Result:
+```
 NAME        READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
 nginx-pod   1/1     Running   0          79s   10.244.0.4   minikube   <none>           <none>
 
+```
 
 4. Delete pod by running `kubectl delete -f nginx-pod.yaml` .
 > Result:
